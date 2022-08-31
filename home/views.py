@@ -15,7 +15,7 @@ def send_via_messaging(request):
     device = FCMDevice.objects.all().first()
     response = messaging.subscribe_to_topic(tokens=[device.registration_id], topic=topic)
     #response = messaging.unsubscribe_from_topic(tokens=[device.registration_id], topic="Russia-Ukrain-Standoff")
-    a= "hit"
+  
     notification = Message(notification=Notification(title="Russia-Ukrain Standoff", body="Russia-Ukrain War, Tables turned",image = "https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg"), topic=topic)
     response = messaging.send(notification)
 
