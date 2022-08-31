@@ -8,7 +8,6 @@ import json
 from fcm_django.models import FCMDevice
 from firebase_admin.messaging import Message, Notification
 from firebase_admin import messaging
-#hooks
 
 def send_via_messaging(request):
     topic="Russia-Ukrain-Standoff"
