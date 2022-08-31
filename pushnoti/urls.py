@@ -21,9 +21,9 @@ urlpatterns = [
 
     path('' , index),
     path('subscribe' , subscribe),
-    
+
     path('send_via_messaging/' , send_via_messaging),
-    
+
     path('send_to_devices/' , send_notification_to_devices),
     path('publish_to_topic/' , send_notification_to_topic),
     path('firebase-messaging-sw.js',showFirebaseJS,name="show_firebase_js"),

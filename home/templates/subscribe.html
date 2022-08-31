@@ -1,8 +1,8 @@
 <html>
 <head>
-    
+
 <script>
-    def get_reg_token(){
+    function get_reg_token(){
         const firebaseConfig = {
     apiKey: "AIzaSyBsavItP5j8wf5jKDOVpt6vI5wvbJ2lQBE",
     authDomain: "push-notification-c52a5.firebaseapp.com",
@@ -15,12 +15,12 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-      
+
         const messaging = firebase.messaging();
         console.log(messaging.getToken())
-        
-      
-      
+
+
+
         messaging
          .requestPermission()
          .then(function () {
@@ -30,18 +30,18 @@
          .catch(function (err) {
          console.log("Unable to get permission to notify.", err);
        });
-      
-      
+
+
         messaging.onMessage((payload) => {
         console.log('Message received. ', payload);
-       
+
       });
-  
+
     }
 </script>
 
 </head>
-<body>    
+<body>
     <p>Select Topics for subscription:</p>
     <form>
       <input type="checkbox" id="Sports" name="Sports" value="Sports">
@@ -52,7 +52,7 @@
       <label for="vehicle3"> Pakistan Flood Crisis </label>
       <br>
       <button type="submit" onclick="get_reg_token()" value = ""> Subscribe</button>
-      
+
     </form>
 </body>
 

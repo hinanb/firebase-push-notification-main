@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'home',
     'fcm_django',   #part of fcm configuration 2/4
 ]
-  
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -132,4 +132,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 PROJECT_APP = os.path.basename(BASE_DIR)
 cred = firebase_admin.credentials.Certificate(os.path.join(PROJECT_APP, '../credentials.json')) #part of fcm configuration 3/4
 firebase_admin.initialize_app(cred) #part of fcm configuration 4/4
-
