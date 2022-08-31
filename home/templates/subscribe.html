@@ -1,0 +1,59 @@
+<html>
+<head>
+    
+<script>
+    def get_reg_token(){
+        const firebaseConfig = {
+    apiKey: "AIzaSyBsavItP5j8wf5jKDOVpt6vI5wvbJ2lQBE",
+    authDomain: "push-notification-c52a5.firebaseapp.com",
+    projectId: "push-notification-c52a5",
+    storageBucket: "push-notification-c52a5.appspot.com",
+    messagingSenderId: "266172152466",
+    appId: "1:266172152466:web:cbceb2ce5073f0ec6c444b",
+    measurementId: "G-3P4JJWT9EN"
+  };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+      
+        const messaging = firebase.messaging();
+        console.log(messaging.getToken())
+        
+      
+      
+        messaging
+         .requestPermission()
+         .then(function () {
+           console.log("Notification permission granted.");
+           return messaging.getToken()
+         })
+         .catch(function (err) {
+         console.log("Unable to get permission to notify.", err);
+       });
+      
+      
+        messaging.onMessage((payload) => {
+        console.log('Message received. ', payload);
+       
+      });
+  
+    }
+</script>
+
+</head>
+<body>    
+    <p>Select Topics for subscription:</p>
+    <form>
+      <input type="checkbox" id="Sports" name="Sports" value="Sports">
+      <label for="vehicle1"> Sports</label><br>
+      <input type="checkbox" id="Politics" name="Politics" value="Politics">
+      <label for="vehicle2"> Politics </label><br>
+      <input type="checkbox" id="Pakistan-Flood-Crisis" name="Pakistan Flood Crisis" value="Pakistan Flood Crisis">
+      <label for="vehicle3"> Pakistan Flood Crisis </label>
+      <br>
+      <button type="submit" onclick="get_reg_token()" value = ""> Subscribe</button>
+      
+    </form>
+</body>
+
+</html>
