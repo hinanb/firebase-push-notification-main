@@ -24,3 +24,45 @@ repos:
       rev: v1.3.0
       hooks:
       -   id: python-safety-dependencies-check
+  # This pre-commit hook enforces static_resources type hinting
+  -   repo: https://github.com/pre-commit/mirrors-mypy
+      rev: v0.800
+      hooks:
+      - id: mypy
+        args: [
+                '--no-strict-optional',
+                '--ignore-missing-imports'
+            ]
+        exclude: '(docs)|migrations|tests'
+  -   repo: https://gitlab.com/pycqa/flake8
+      rev: 3.8.4
+      hooks:
+        -   id: flake8
+            exclude: ../tests/|docs|config|../migrations/|utils/countries.py
+            additional_dependencies: [
+                'flake8-bugbear',
+                'flake8-comprehensions',
+                'flake8-debugger',
+                'flake8-deprecated',
+                'flake8-docstrings',
+                'flake8-isort',
+                'flake8-pep3101',
+                'flake8-polyfill',
+                'flake8-print',
+                'flake8-quotes',
+                'flake8-string-format',
+                'flake8-todos',
+                'flake8-fixme'
+            ]
+            # About E203, https://github.com/psf/black/issues/315, TL;DR; E203 is not pep8 compliant
+            # About W503, https://www.flake8rules.com/rules/W503.html, TL;DR; This rule goes against the PEP 8 recommended style
+            # About F403, like discussed we should allow * imports
+            # About E501, https://pypi.org/project/black/
+            # --max-complexity is McCabe complexity, https://www.guru99.com/cyclomatic-complexity.html
+            # --max-line-length=88, https://github.com/psf/black/blob/master/README.md, to comply to blacks minimal flake8 config
+            args: [
+                '--ignore=E203,F403,E501,W503,C416,C408',
+                '--select=C,E,F,W,B,B950',
+                '--max-complexity=18',
+                '--max-line-length=88',
+            ]
