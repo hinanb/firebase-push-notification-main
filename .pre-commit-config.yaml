@@ -38,7 +38,6 @@ repos:
       rev: 3.8.4
       hooks:
         -   id: flake8
-            exclude: ../tests/|docs|config|../migrations/|utils/countries.py
             additional_dependencies: [
                 'flake8-bugbear',
                 'flake8-comprehensions',
