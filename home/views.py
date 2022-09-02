@@ -27,13 +27,13 @@ def test_cache(request):
 
 
 def send_via_messaging(request):
-    topic="Russia-Ukrain-Standoff"
+    topic='Russia-Ukrain-Standoff'
 
     device = FCMDevice.objects.all().first()
     response = messaging.subscribe_to_topic(tokens=[device.registration_id], topic=topic)
     #response = messaging.unsubscribe_from_topic(tokens=[device.registration_id], topic="Russia-Ukrain-Standoff")
 
-    notification = Message(notification=Notification(title="Russia-Ukrain Standoff", body="Russia-Ukrain War, Tables turned",image = "https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg"), topic=topic)
+    notification = Message(notification=Notification(title='Russia-Ukrain Standoff', body='Russia-Ukrain War, Tables turned',image = 'https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg'), topic=topic)
     response = messaging.send(notification)
 
     return HttpResponse('<h1 style="text-align: center;"> Notification Sent! to topic:</h1>')
@@ -43,7 +43,7 @@ def send_notification_to_devices(request):
     #If no FCMDevices saved in db, goto admin panel and create new ones.
 
     device = FCMDevice.objects.all().first()
-    device.send_message(Message(notification=Notification(title="Russia-Ukrain Standoff", body="Russia-Ukrain War, Tables turned",image = "https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg")))
+    device.send_message(Message(notification=Notification(title='Russia-Ukrain Standoff', body='Russia-Ukrain War, Tables turned',image = 'https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg')))
 
     return HttpResponse('<h1 style="text-align: center;"> Notification Sent! </h1>')
 
@@ -54,11 +54,11 @@ def send_notification_to_topic(request):
 
     #Subscribe devices to a topic
     device = FCMDevice.objects.all().first()
-    device.handle_topic_subscription(should_subscribe = True, topic="Russia-Ukrain")
+    device.handle_topic_subscription(should_subscribe = True, topic='Russia-Ukrain')
 
     # Send a message to the devices subscribed to the provided topic.
-    message = Message(notification=Notification(title="Russia-Ukrain Standoff", body="Russia-Ukrain War, Tables turned",image = "https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg"))
-    FCMDevice.send_topic_message(message=message,topic_name="Russia-Ukrain")
+    message = Message(notification=Notification(title='Russia-Ukrain Standoff', body='Russia-Ukrain War, Tables turned',image = 'https://storage.googleapis.com/afs-prod/media/35fd8b00bc574708a0211005c98d4609/1000.jpeg'))
+    FCMDevice.send_topic_message(message=message,topic_name='Russia-Ukrain')
 
     return HttpResponse('<h1 style="text-align: center;"> Notification Sent! </h1>')
 
@@ -93,4 +93,4 @@ def showFirebaseJS(request):
          '    return self.registration.showNotification(payload.notification.title,notificationOption);' \
          '});'
 
-    return HttpResponse(data,content_type="text/javascript")
+    return HttpResponse(data,content_type='text/javascript')
