@@ -9,6 +9,23 @@ from fcm_django.models import FCMDevice
 from firebase_admin.messaging import Message, Notification
 from firebase_admin import messaging
 
+
+from django.core.cache import cache
+from .models import imdb
+
+def test_cache(request):
+    movie_name = 'X-Man1'
+
+    if cache.get(movie_name):
+        title = cache.get(movie_name)
+        cache.clear()
+    else:
+        movie = imdb.objects.filter(movie_name = movie_name)
+        cache.set(movie_name, movie)
+    return HttpResponse('working')
+
+
+
 def send_via_messaging(request):
     topic="Russia-Ukrain-Standoff"
 

@@ -74,6 +74,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pushnoti.wsgi.application'
 
+redis_host = os.environ.get("REDISHOST", "localhost")
+redis_port = int(os.environ.get("REDISPORT", 6379))
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://{redis_host}:{redis_port}",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    }
+}
+
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases

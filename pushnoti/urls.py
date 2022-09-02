@@ -27,5 +27,7 @@ urlpatterns = [
     path('send_to_devices/' , send_notification_to_devices),
     path('publish_to_topic/' , send_notification_to_topic),
     path('firebase-messaging-sw.js',showFirebaseJS,name="show_firebase_js"),
+    path('test_cache' , test_cache),
+
     path('admin/', admin.site.urls),
 ]
