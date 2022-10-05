@@ -14,7 +14,7 @@ from django.core.cache import cache
 from .models import imdb
 
 def test_cache(request):
-    movie_name = 'X-Man1'
+    movie_name = 'X-Man1--'
 
     if cache.get(movie_name):
         title = cache.get(movie_name)
