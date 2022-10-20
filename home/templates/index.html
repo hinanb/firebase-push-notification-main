@@ -17,13 +17,13 @@
 
      <script>
         const firebaseConfig = {
-    apiKey: "AIzaSyBsavItP5j8wf5jKDOVpt6vI5wvbJ2lQBE",
-    authDomain: "push-notification-c52a5.firebaseapp.com",
-    projectId: "push-notification-c52a5",
-    storageBucket: "push-notification-c52a5.appspot.com",
-    messagingSenderId: "266172152466",
-    appId: "1:266172152466:web:cbceb2ce5073f0ec6c444b",
-    measurementId: "G-3P4JJWT9EN"
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    measurementId: ""
   };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
@@ -31,7 +31,7 @@
 
         const messaging = firebase.messaging();
         console.log(messaging.getToken())
-        messaging.getToken({ vapidKey: 'BEnwSEyuSCgsnHSAOLRFzDQxATNjo5OU3qTWtjsBRcjCd2jC1W8S52PpuQkJa1c6n1mTSkAw3q4Qjr5LMiotHUs' }).then((currentToken) => {
+        messaging.getToken({ vapidKey: 'your account key pair here' }).then((currentToken) => {
         if (currentToken) {
           console.log(currentToken)
           document.write("This is registration token of this device, send notifications to this for testing:  ",currentToken)
