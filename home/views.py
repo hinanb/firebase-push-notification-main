@@ -10,9 +10,9 @@ from pyfcm import FCMNotification
 
 def initialize_fcm_package():
     #server key for auth
-    push_service = FCMNotification(api_key='AAAAPfkYupI:APA91bHxokzTLn_5rkdiZob3dEweZoYMOVUjgE8NmSoZTlxw-v03kKaVy9vn69gnAHb1BGybd1sxofmBnyFkVzYSOW_qUu3HmMU6fsv-bZMx8DHvFGxWqGkcs9Zg8aPMrDlF_mwY_Ueg')
+    push_service = FCMNotification(api_key='your server key here')
     return push_service, {'**fcm_options**': {
-        'analytics_label': 'notification-label'}}, 'dumuBg2UKLwtSx0v2benHk:APA91bG1pGd-AR0CLuTv_NPXiBM7SnskIG__XOkJUW7Pt8IzmsbJqEf-ztLpnYcogMO6wq0GGCKxr-CMiLdpNr6vtiySLymXNPAd58mv__lcAR28eT0dupAm9axvf1YvGhM0BPtxGmJB'
+        'analytics_label': 'notification-label'}}, 'registration id of device here'
 
 
 def send_via_fcm_package_single_device(request):
@@ -85,7 +85,7 @@ def send_via_requests(request):
 
     headers = {
         'Content-Type':'application/json',
-        'Authorization': 'key=AAAAPfkYupI:APA91bHxokzTLn_5rkdiZob3dEweZoYMOVUjgE8NmSoZTlxw-v03kKaVy9vn69gnAHb1BGybd1sxofmBnyFkVzYSOW_qUu3HmMU6fsv-bZMx8DHvFGxWqGkcs9Zg8aPMrDlF_mwY_Ueg'}
+        'Authorization': 'key=server key here'}
 
     requests.post('https://fcm.googleapis.com/fcm/send', data= json.dumps(data), headers=headers)
 
